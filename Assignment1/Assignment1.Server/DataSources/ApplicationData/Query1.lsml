@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <QueryOperation
+      Name="Query1"
+      ReturnType="Person*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="And">
+            <BinaryExpression.Left>
+              <BinaryExpression
+                NodeType="NotContains">
+                <BinaryExpression.Left>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="Qualification" />
+                  </ChainExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <ConstantExpression
+                    Value="nothing"
+                    ResultType=":String" />
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <BinaryExpression
+                NodeType="NotContains">
+                <BinaryExpression.Left>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="Qualification" />
+                  </ChainExpression>
+                </BinaryExpression.Left>
+                <BinaryExpression.Right>
+                  <ConstantExpression
+                    Value="none"
+                    ResultType=":String" />
+                </BinaryExpression.Right>
+              </BinaryExpression>
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="People" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperation.SortCriteria>
+        <SortCriterion>
+          <ChainExpression>
+            <MemberExpression
+              Member="Id" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+    </QueryOperation>
+  </EntityContainer>
+</ServiceApplication>

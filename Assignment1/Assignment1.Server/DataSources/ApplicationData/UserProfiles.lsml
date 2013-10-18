@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="UserProfile">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="CaseInstances"
+        Association="CaseInstance_UserProfile"
+        FromEnd="UserProfile"
+        ToEnd="CaseInstance" />
+      <NavigationProperty
+        Name="AchievementsCollection"
+        Association="UserProfile_Achievement"
+        FromEnd="UserProfile"
+        ToEnd="Achievement" />
+      <NavigationProperty
+        Name="RewardsCollection"
+        Association="UserProfile_Reward"
+        FromEnd="UserProfile"
+        ToEnd="Reward" />
+      <NavigationProperty
+        Name="Person"
+        Association="Person_UserProfile"
+        FromEnd="UserProfile"
+        ToEnd="Person" />
+      <EntityProperty
+        Name="TotalAchievementPoints"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="CaseComments"
+        Association="CaseComment_UserProfile"
+        FromEnd="UserProfile"
+        ToEnd="CaseComment" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="CaseInstance_UserProfile">
+    <AssociationEnd
+      Name="CaseInstance"
+      Multiplicity="Many"
+      EntityType="CaseInstance" />
+    <AssociationEnd
+      Name="UserProfile"
+      Multiplicity="One"
+      EntityType="UserProfile">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="UserProfile_Achievement">
+    <AssociationEnd
+      Name="UserProfile"
+      Multiplicity="One"
+      EntityType="UserProfile">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Achievement"
+      Multiplicity="Many"
+      EntityType="Achievement" />
+  </Association>
+  <Association
+    Name="UserProfile_Reward">
+    <AssociationEnd
+      Name="UserProfile"
+      Multiplicity="One"
+      EntityType="UserProfile">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Reward"
+      Multiplicity="Many"
+      EntityType="Reward" />
+  </Association>
+  <Association
+    Name="CaseComment_UserProfile">
+    <AssociationEnd
+      Name="CaseComment"
+      Multiplicity="Many"
+      EntityType="CaseComment" />
+    <AssociationEnd
+      Name="UserProfile"
+      Multiplicity="One"
+      EntityType="UserProfile">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="UserProfiles"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="UserProfile" />
+    <QueryOperation
+      Name="UserProfiles_Single"
+      ReturnType="UserProfile">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="UserProfiles" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="UserProfiles_SingleOrDefault"
+      ReturnType="UserProfile">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="UserProfiles" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="CaseInstance_UserProfiles"
+      Association="CaseInstance_UserProfile">
+      <AssociationSetEnd
+        Name="CaseInstance"
+        EntitySet="CaseInstances" />
+      <AssociationSetEnd
+        Name="UserProfile"
+        EntitySet="UserProfiles" />
+    </AssociationSet>
+    <AssociationSet
+      Name="UserProfile_Achievements"
+      Association="UserProfile_Achievement">
+      <AssociationSetEnd
+        Name="UserProfile"
+        EntitySet="UserProfiles" />
+      <AssociationSetEnd
+        Name="Achievement"
+        EntitySet="Achievements" />
+    </AssociationSet>
+    <AssociationSet
+      Name="UserProfile_Rewards"
+      Association="UserProfile_Reward">
+      <AssociationSetEnd
+        Name="UserProfile"
+        EntitySet="UserProfiles" />
+      <AssociationSetEnd
+        Name="Reward"
+        EntitySet="Rewards" />
+    </AssociationSet>
+    <AssociationSet
+      Name="CaseComment_UserProfiles"
+      Association="CaseComment_UserProfile">
+      <AssociationSetEnd
+        Name="CaseComment"
+        EntitySet="CaseComments" />
+      <AssociationSetEnd
+        Name="UserProfile"
+        EntitySet="UserProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="UserProfiles">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Id"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="CaseInstance_UserProfiles">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="CaseInstance_UserProfiles" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseInstance_UserProfiles]/Members[CaseInstance]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CaseInstance_UserProfile" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseInstance_UserProfiles]/Members[UserProfile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="UserProfile_Achievements">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="UserProfile_AchievementsSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[UserProfile_Achievements]/Members[UserProfile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[UserProfile_Achievements]/Members[Achievement]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="UserProfile_Achievements" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="UserProfile_Rewards">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="UserProfile_RewardsSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[UserProfile_Rewards]/Members[UserProfile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[UserProfile_Rewards]/Members[Reward]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="UserProfile_Rewards" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="CaseComment_UserProfiles">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="CaseComment_UserProfiles" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseComment_UserProfiles]/Members[CaseComment]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CaseComment_UserProfile" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseComment_UserProfiles]/Members[UserProfile]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>

@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceApplication
+  Name="LightSwitchServiceApplication" xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
+  <ServiceApplication.Attributes>
+    <Partial />
+  </ServiceApplication.Attributes>
+  <EntityType
+    Name="CaseInstance">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="Tree"
+        Association="CaseInstance_Tree"
+        FromEnd="CaseInstance"
+        ToEnd="Tree" />
+      <NavigationProperty
+        Name="UserProfile"
+        Association="CaseInstance_UserProfile"
+        FromEnd="CaseInstance"
+        ToEnd="UserProfile" />
+      <EntityProperty
+        Name="Status"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            DisplayName="Not infected"
+            Value="Notinfected" />
+          <SupportedValue
+            DisplayName="Infection Suspected"
+            Value="SuspectedInfected" />
+          <SupportedValue
+            DisplayName="Infection Confirmed"
+            Value="confirmedinfeceted" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="LastUpdate"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="VotesFor"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="VotesAgainst"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FinalStatus"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+          <SupportedValue
+            DisplayName="Confimed Infected"
+            Value="Confirmed" />
+          <SupportedValue
+            DisplayName="Not Infected"
+            Value="NotInfected" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Comments"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="CaseComments"
+        Association="CaseComment_CaseInstance"
+        FromEnd="CaseInstance"
+        ToEnd="CaseComment" />
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="CaseInstance_Tree">
+    <AssociationEnd
+      Name="CaseInstance"
+      Multiplicity="One"
+      EntityType="CaseInstance">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Cascade" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Tree"
+      EntityType="Tree" />
+  </Association>
+  <Association
+    Name="CaseComment_CaseInstance">
+    <AssociationEnd
+      Name="CaseComment"
+      Multiplicity="Many"
+      EntityType="CaseComment" />
+    <AssociationEnd
+      Name="CaseInstance"
+      Multiplicity="One"
+      EntityType="CaseInstance">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <EntityContainer
+    Name="ApplicationData">
+    <EntityContainer.Attributes>
+      <Partial />
+    </EntityContainer.Attributes>
+    <EntitySet
+      Name="CaseInstances"
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="CaseInstance" />
+    <QueryOperation
+      Name="CaseInstances_Single"
+      ReturnType="CaseInstance">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="CaseInstances" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="CaseInstances_SingleOrDefault"
+      ReturnType="CaseInstance">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="CaseInstances" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Name="CaseInstance_Trees"
+      Association="CaseInstance_Tree">
+      <AssociationSetEnd
+        Name="CaseInstance"
+        EntitySet="CaseInstances" />
+      <AssociationSetEnd
+        Name="Tree"
+        EntitySet="Trees" />
+    </AssociationSet>
+    <AssociationSet
+      Name="CaseComment_CaseInstances"
+      Association="CaseComment_CaseInstance">
+      <AssociationSetEnd
+        Name="CaseComment"
+        EntitySet="CaseComments" />
+      <AssociationSetEnd
+        Name="CaseInstance"
+        EntitySet="CaseInstances" />
+    </AssociationSet>
+  </EntityContainer>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <EntitySetMapping
+      EntitySet="CaseInstances">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="CaseInstance_UserProfile"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="CaseInstance_Trees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="CaseInstance_Trees" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseInstance_Trees]/Members[CaseInstance]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseInstance_Trees]/Members[Tree]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="CaseComment_CaseInstances">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="CaseComment_CaseInstances" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseComment_CaseInstances]/Members[CaseComment]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="CaseComment_CaseInstance" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[CaseComment_CaseInstances]/Members[CaseInstance]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+</ServiceApplication>
