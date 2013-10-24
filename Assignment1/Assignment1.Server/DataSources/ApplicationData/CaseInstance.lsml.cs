@@ -11,9 +11,9 @@ namespace LightSwitchApplication
         {
             this.Tree = new Tree();
             this.VotesAgainst = 0;
-            this.VotesFor = 0;
-            this.LastUpdate = DateTime.Now;
-
+            this.VotesFor = 0;           
+            this.CreatedBy = this.Application.User.Name;
+            this.WhenCreated = DateTime.Now;
         }
         
     }

@@ -9,6 +9,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="New Case" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -177,6 +179,10 @@
                   Name="ShowAddEditTree"
                   Kind="Command"
                   View="Microsoft.LightSwitch.MobileWeb:Button">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Add a Tree" />
+                  </ContentItem.Attributes>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
                       Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">

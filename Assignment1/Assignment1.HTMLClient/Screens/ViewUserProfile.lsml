@@ -9,6 +9,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="User Profile" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -25,7 +27,7 @@
             View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
             <ContentItem.Attributes>
               <DisplayName
-                Value="Details" />
+                Value="You" />
             </ContentItem.Attributes>
             <ContentItem
               Name="columns"
@@ -178,16 +180,6 @@
                   </ContentItem>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Hidden"
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
                       Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">
                       <ScreenExpressionTree>
                         <ChainExpression>
@@ -267,6 +259,10 @@
               Name="CaseInstances1"
               Kind="Collection"
               DataType="CollectionView$CaseInstance">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Cases" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
@@ -441,6 +437,10 @@
             Name="AchievementsCollection"
             Kind="Group"
             View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Achievements" />
+            </ContentItem.Attributes>
             <ContentItem
               Name="AchievementsCollection1"
               Kind="Collection"
@@ -552,6 +552,10 @@
             Name="RewardsCollection"
             Kind="Group"
             View="Microsoft.LightSwitch.MobileWeb:RowsLayout">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Rewards" />
+            </ContentItem.Attributes>
             <ContentItem
               Name="RewardsCollection1"
               Kind="Collection"
@@ -611,19 +615,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="RewardDescription"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Reward/Properties[RewardDescription]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
                   Name="RewardValue"
                   Kind="Value"
                   DataType=":Double">
@@ -636,6 +627,18 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[AttachedLabelPosition]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression
+                          Value="Top"
+                          ResultType=":String" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
               </ContentItem>
               <ContentItem.PropertySources>
                 <ControlPropertySource

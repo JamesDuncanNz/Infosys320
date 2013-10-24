@@ -13,7 +13,6 @@
     <Partial
       IsPrimary="True" />
   </Application.Attributes>
-  <Application.Methods></Application.Methods>
   <EntityContainerGroup
     Name="DataWorkspace">
     <EntityContainerGroupProperty
@@ -37,4 +36,10 @@
         Target="ServiceInterface:LightSwitchServiceApplicationGroup" />
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:GeneralUser" />
+    </Permission.Attributes>
+  </Permission>
 </Application>

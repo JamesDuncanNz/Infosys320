@@ -33,4 +33,13 @@
         Replacement="$1 $2" />
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
+  <Permission
+    Name="GeneralUser">
+    <Permission.Attributes>
+      <DisplayName
+        Value="User" />
+      <Description
+        Value="General user of the site" />
+    </Permission.Attributes>
+  </Permission>
 </ServiceApplication>

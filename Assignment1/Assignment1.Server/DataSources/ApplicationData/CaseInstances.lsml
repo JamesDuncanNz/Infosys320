@@ -109,6 +109,21 @@
         Association="CaseComment_CaseInstance"
         FromEnd="CaseInstance"
         ToEnd="CaseComment" />
+      <EntityProperty
+        Name="WhenCreated"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="CreatedBy"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Association

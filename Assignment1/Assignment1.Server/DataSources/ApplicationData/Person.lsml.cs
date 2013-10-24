@@ -10,6 +10,7 @@ namespace LightSwitchApplication
         partial void Person_Created()
         {
             this.UserProfile = new UserProfile();
+            this.WhenCreated = DateTime.Now;
         }
 
         partial void DateOfBirth_Validate(EntityValidationResultsBuilder results)

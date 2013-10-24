@@ -2,5 +2,5 @@
 
 myapp.Tree.created = function (entity) {
     // Write code here.    
-    
+
 };

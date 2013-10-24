@@ -9,6 +9,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="Achievements" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -204,6 +206,10 @@
               <ContentItem
                 Name="ShowAddEditAchievement"
                 Kind="Command">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="New Achievement" />
+                </ContentItem.Attributes>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.MobileWeb:RootControl/Properties[Tap]">

@@ -20,5 +20,6 @@ namespace LightSwitchApplication
         {
             entity.TimeofComment = DateTime.Now;
         }
+
     }
 }

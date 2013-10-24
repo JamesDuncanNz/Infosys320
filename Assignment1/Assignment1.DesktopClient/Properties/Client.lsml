@@ -12,28 +12,6 @@
     <Partial
       IsPrimary="True" />
   </Application.Attributes>
-  <Application.NavigationItems>
-    <ApplicationNavigationGroup
-      Name="Tasks">
-      <ApplicationNavigationGroup.Attributes>
-        <DisplayName
-          Value="Tasks" />
-      </ApplicationNavigationGroup.Attributes>
-    </ApplicationNavigationGroup>
-    <ApplicationNavigationGroup
-      Name="Administration">
-      <ApplicationNavigationGroup.Attributes>
-        <DisplayName
-          Value="Administration" />
-      </ApplicationNavigationGroup.Attributes>
-      <ApplicationNavigationLink
-        Name="RolesScreen"
-        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowRolesScreen]" />
-      <ApplicationNavigationLink
-        Name="UsersScreen"
-        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowUsersScreen]" />
-    </ApplicationNavigationGroup>
-  </Application.NavigationItems>
   <EntityContainerGroup
     Name="DataWorkspace">
     <EntityContainerGroupProperty
@@ -57,4 +35,32 @@
         Target="ServiceInterface:LightSwitchServiceApplicationGroup" />
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:GeneralUser" />
+    </Permission.Attributes>
+  </Permission>
+  <Application.NavigationItems>
+    <ApplicationNavigationGroup
+      Name="Tasks">
+      <ApplicationNavigationGroup.Attributes>
+        <DisplayName
+          Value="Tasks" />
+      </ApplicationNavigationGroup.Attributes>
+    </ApplicationNavigationGroup>
+    <ApplicationNavigationGroup
+      Name="Administration">
+      <ApplicationNavigationGroup.Attributes>
+        <DisplayName
+          Value="Administration" />
+      </ApplicationNavigationGroup.Attributes>
+      <ApplicationNavigationLink
+        Name="RolesScreen"
+        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowRolesScreen]" />
+      <ApplicationNavigationLink
+        Name="UsersScreen"
+        Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowUsersScreen]" />
+    </ApplicationNavigationGroup>
+  </Application.NavigationItems>
 </Application>
